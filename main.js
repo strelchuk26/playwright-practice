@@ -1,6 +1,14 @@
 const playwright = require("playwright");
 const notify = require("./utils/webhook");
 const config = require("./config");
+const express = require("express");
+
+const app = express();
+app.use(express.json());
+
+app.get("/", (req, res) => {
+    res.send("Bot is running!");
+});
 
 let lastExams = [];
 
@@ -144,3 +152,8 @@ async function checkForNewExams() {
 
 setInterval(checkForNewExams, config.refreshTime * 1000);
 checkForNewExams();
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}`);
+});
