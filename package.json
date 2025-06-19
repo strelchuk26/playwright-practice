@@ -1,0 +1,19 @@
+{
+    "name": "playwright-practice",
+    "version": "1.0.0",
+    "description": "",
+    "license": "ISC",
+    "author": "",
+    "type": "commonjs",
+    "main": "main.js",
+    "scripts": {
+        "start": "node main"
+    },
+    "dependencies": {
+        "dotenv": "^16.5.0",
+        "https-proxy-agent": "^5.0.1",
+        "node-fetch": "^2.6.1",
+        "node-telegram-bot-api": "^0.59.0",
+        "playwright": "^1.10.0"
+    }
+}
