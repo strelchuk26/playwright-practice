@@ -5,7 +5,7 @@ const config = require("./config");
 let lastExams = [];
 
 async function fetchExams() {
-    const browser = await playwright.firefox.launch({ headless: false, slowMo: 50 });
+    const browser = await playwright.firefox.launch({ headless: true, slowMo: 50 });
     const page = await browser.newPage();
 
     await page.goto("https://info-car.pl/oauth2/login", { waitUntil: "networkidle" });
