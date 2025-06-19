@@ -24,11 +24,8 @@ async function fetchExams() {
 
     console.log("Login successfull!");
 
+    console.log("Navigating to exam page...");
     await page.goto("https://info-car.pl/new/prawo-jazdy/sprawdz-wolny-termin", { waitUntil: "networkidle" });
-
-    console.log("Checking free exams...");
-
-    await page.reload({ waitUntil: "networkidle" });
 
     await page.locator('input[type="radio"]').first().check();
 
@@ -46,11 +43,14 @@ async function fetchExams() {
     await page.locator("#category-select").fill("B");
     await page.waitForSelector("#b");
     await page.locator("#b").click();
+    console.log("All selectors filled");
 
     await page.locator('button:has-text("Dalej")').click();
 
     await page.waitForSelector("text=Praktyka");
     await page.locator('input[type="radio"][aria-label="PRACTICE"]').click();
+
+    console.log("Checking free exams...");
 
     const dayContainers = page.locator("div.accordion-item");
     const dayCount = await dayContainers.count();
